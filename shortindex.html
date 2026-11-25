@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Message 💌</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffe0eb, #f8c8dc, #fff0f5);
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+.hearts span {
+    position: absolute;
+    bottom: -30px;
+    font-size: 22px;
+    animation: float 8s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0); opacity: 0; }
+    20% { opacity: 0.7; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+
+.card {
+    width: 90%;
+    max-width: 420px;
+    background: rgba(255,255,255,0.85);
+    padding: 35px 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(200,80,130,0.18);
+    position: relative;
+    z-index: 2;
+    animation: appear 1s ease;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.emoji {
+    font-size: 65px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    color: #d94f86;
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+p {
+    color: #805267;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+button {
+    border: none;
+    padding: 13px 22px;
+    border-radius: 30px;
+    background: #e96b9c;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 23px;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.06);
+    background: #d94f86;
+}
+
+.hidden {
+    display: none;
+}
+
+.message {
+    background: #fff1f6;
+    border: 1px dashed #ec9ab9;
+    padding: 20px;
+    border-radius: 18px;
+    margin-top: 20px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.no {
+    background: #c6a5b5;
+}
+
+#reply {
+    margin-top: 20px;
+    color: #d94f86;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts">
+    <span style="left:10%;animation-delay:0s">💗</span>
+    <span style="left:25%;animation-delay:2s">💕</span>
+    <span style="left:45%;animation-delay:4s">💖</span>
+    <span style="left:65%;animation-delay:1s">💗</span>
+    <span style="left:85%;animation-delay:3s">💞</span>
+</div>
+
+<div class="card">
+
+    <div id="welcome">
+        <div class="emoji">💌</div>
+        <h1>Hey You!</h1>
+        <p>Someone has a tiny little message for you...</p>
+        <button onclick="openMessage()">Open Message 💗</button>
+    </div>
+
+    <div id="letter" class="hidden">
+        <div class="emoji">🥹💕</div>
+        <h1>A Little Secret...</h1>
+
+        <div class="message">
+            <p>
+            Hey! My friend shekhar
+ is actually a bit shy to come over,
+            so I'm doing the heavy lifting 😭
+
+            He really wanted to say hi and asked if he could get your Insta? 👀💗
+            </p>
+        </div>
+
+        <p style="margin-top:18px;">So... what do you say? 🙈</p>
+
+        <div class="buttons">
+            <button onclick="yes()">Sure, here's my Insta! 💗</button>
+            <button class="no" onclick="maybe()">Maybe later 🙈</button>
+        </div>
+
+        <div id="reply"></div>
+    </div>
+
+</div>
+
+<script>
+function openMessage() {
+    document.getElementById("welcome").classList.add("hidden");
+    document.getElementById("letter").classList.remove("hidden");
+}
+
+function yes() {
+    document.getElementById("reply").innerHTML =
+    "OMG! Shekhar is going to be so happy! 😭💖";
+}
+
+function maybe() {
+    document.getElementById("reply").innerHTML =
+    "No pressure at all! Take your time 💕";
+}
+</script>
+
+</body>
+</html>
